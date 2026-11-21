@@ -1,0 +1,546 @@
+:root {
+  --bg: #0f1117;
+  --panel: #171a23;
+  --panel-2: #1e222e;
+  --border: #2a2f3c;
+  --text: #e6e8ee;
+  --muted: #9aa3b2;
+  --accent: #6ea8fe;
+  --accent-2: #4f8cff;
+  --ok: #3fb950;
+  --no: #f85149;
+  --code-bg: #0b0d13;
+  --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  padding: 20px 14px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text);
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+.brand-mark {
+  font-family: var(--mono);
+  color: var(--accent);
+}
+
+.nav-course {
+  margin-bottom: 6px;
+}
+.nav-course-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+}
+.nav-course-title:hover {
+  background: var(--panel-2);
+}
+.nav-course-title.active {
+  background: var(--panel-2);
+  color: var(--accent);
+}
+.nav-count {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.nav-lessons {
+  list-style: none;
+  margin: 2px 0 8px;
+  padding: 0 0 0 8px;
+}
+.nav-lesson {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 7px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+}
+.nav-lesson:hover {
+  background: var(--panel-2);
+  color: var(--text);
+}
+.nav-lesson.active {
+  color: var(--text);
+  background: var(--panel-2);
+}
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1.5px solid var(--muted);
+  flex: none;
+}
+.dot-done {
+  background: var(--ok);
+  border-color: var(--ok);
+}
+
+/* ---------- Main ---------- */
+.main {
+  padding: 0 0 60px;
+}
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 32px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: rgba(15, 17, 23, 0.9);
+  backdrop-filter: blur(6px);
+  z-index: 5;
+}
+.overall-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bar {
+  width: 200px;
+  height: 8px;
+  background: var(--panel-2);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+  transition: width 0.3s ease;
+}
+.bar-label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.page {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 28px 32px;
+}
+
+.hero h1 {
+  font-size: 34px;
+  margin: 10px 0;
+}
+.lede {
+  color: var(--muted);
+  font-size: 17px;
+  max-width: 640px;
+}
+.schema-note {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ---------- Course cards ---------- */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+.course-card {
+  text-align: left;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  cursor: pointer;
+  color: var(--text);
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+.course-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+.course-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.course-card h2 {
+  margin: 0;
+}
+.course-card p {
+  color: var(--muted);
+  min-height: 48px;
+}
+.course-card-foot {
+  font-size: 13px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+.badge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 99px;
+  background: var(--panel-2);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+.badge-live {
+  color: var(--ok);
+  border-color: var(--ok);
+}
+
+/* ---------- Lesson list ---------- */
+.crumbs {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.crumbs a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.crumbs span {
+  margin: 0 4px;
+}
+
+.lesson-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+.lesson-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+}
+.lesson-row:hover {
+  border-color: var(--accent);
+}
+.lesson-row-num {
+  font-family: var(--mono);
+  color: var(--muted);
+  width: 20px;
+}
+.lesson-row-title {
+  flex: 1;
+  font-weight: 500;
+}
+.done-tag {
+  color: var(--ok);
+  font-size: 13px;
+  margin-left: 10px;
+}
+
+/* ---------- Lesson page ---------- */
+.lesson-page h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lesson-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+  margin: 20px 0 30px;
+}
+.lesson-section h2 {
+  font-size: 18px;
+  margin: 18px 0 6px;
+}
+.prose-line {
+  margin: 6px 0;
+}
+.lesson-side {
+  position: sticky;
+  top: 70px;
+}
+.guided-note {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---------- Code ---------- */
+.inline-code {
+  font-family: var(--mono);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+.code-block {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 13.5px;
+}
+
+/* ---------- Playground ---------- */
+.playground {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.playground-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel-2);
+}
+.pg-label {
+  font-size: 13px;
+  color: var(--muted);
+}
+.editor {
+  width: 100%;
+  border: none;
+  background: var(--code-bg);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 14px;
+  padding: 14px;
+  resize: vertical;
+  line-height: 1.5;
+  display: block;
+}
+.editor:focus {
+  outline: 2px solid var(--accent-2);
+  outline-offset: -2px;
+}
+.status {
+  padding: 8px 14px;
+  font-size: 13px;
+  color: var(--accent);
+  background: var(--panel-2);
+}
+.output {
+  margin: 0;
+  padding: 14px;
+  background: var(--code-bg);
+  border-top: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 13px;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+.output-error {
+  color: var(--no);
+}
+
+.result-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+}
+.result-table th,
+.result-table td {
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  text-align: left;
+}
+.result-table th {
+  background: var(--panel-2);
+}
+
+/* ---------- Quiz ---------- */
+.quiz {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-top: 10px;
+}
+.quiz-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.quiz-progress {
+  font-size: 13px;
+  color: var(--muted);
+}
+.question {
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+}
+.question:first-of-type {
+  border-top: none;
+}
+.q-prompt {
+  margin: 0 0 10px;
+}
+.q-prompt p {
+  display: inline;
+}
+.options {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  display: grid;
+  gap: 8px;
+}
+.opt {
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 14px;
+}
+.opt:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+.opt.correct {
+  border-color: var(--ok);
+  background: rgba(63, 185, 80, 0.12);
+}
+.opt.wrong {
+  border-color: var(--no);
+  background: rgba(248, 81, 73, 0.12);
+}
+.feedback {
+  margin-top: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.feedback.ok {
+  background: rgba(63, 185, 80, 0.1);
+  border: 1px solid var(--ok);
+}
+.feedback.no {
+  background: rgba(248, 81, 73, 0.08);
+  border: 1px solid var(--no);
+}
+.feedback p {
+  display: inline;
+}
+.hint {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.q-actions {
+  margin-top: 10px;
+}
+.quiz-done {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(63, 185, 80, 0.12);
+  border: 1px solid var(--ok);
+  border-radius: 8px;
+  color: var(--ok);
+  font-weight: 600;
+}
+
+/* ---------- Buttons & nav ---------- */
+.btn {
+  background: var(--accent-2);
+  color: white;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+}
+.btn:hover:not(:disabled) {
+  background: var(--accent);
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.btn.ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.btn.ghost:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: transparent;
+}
+.btn.small {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.lesson-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 28px;
+  gap: 12px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+    height: auto;
+  }
+  .lesson-layout {
+    grid-template-columns: 1fr;
+  }
+  .lesson-side {
+    position: static;
+  }
+}
